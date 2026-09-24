@@ -1,0 +1,847 @@
+:root {
+    --rojo: rgb(134, 29, 29);
+    --rojo-oscuro: rgb(96, 20, 20);
+
+    --blanco: rgb(233, 223, 223);
+    --papel: #f8f5e8;
+
+    --fondo-solido: rgb(205, 205, 167);
+
+    --tinta: #2a1b1b;
+    --tinta-suave: #64534f;
+
+    --linea: rgba(134, 29, 29, 0.22);
+
+    --rojo-claro: rgba(134, 29, 29, 0.09);
+    --rojo-medio: rgba(134, 29, 29, 0.15);
+
+    --sombra: rgba(42, 27, 27, 0.13);
+
+    --verde: #4caf50;
+
+    --serif: 'Iowan Old Style',
+             'Palatino Linotype',
+             Palatino,
+             Georgia,
+             serif;
+
+    --sans: 'Segoe UI',
+            Tahoma,
+            Geneva,
+            Verdana,
+            sans-serif;
+
+    --maquina: 'Courier New',
+               Courier,
+               monospace;
+
+    --header-alto: 68px;
+
+    --radio: 14px;
+}
+
+
+/* =========================
+   CONFIGURACIÓN GENERAL
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--papel) 0%,
+            var(--fondo-solido) 100%
+        );
+
+    color: var(--tinta);
+
+    font-family: var(--sans);
+
+    min-height: 100vh;
+
+    padding-bottom: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+header {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: var(--header-alto);
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 clamp(16px, 4vw, 48px);
+
+    background-color: var(--rojo);
+
+    color: var(--blanco);
+
+    box-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.3);
+
+    z-index: 1000;
+
+    transition:
+        transform 0.3s ease-in-out,
+        background-color 0.3s ease;
+}
+
+
+/* Ocultar header al bajar */
+
+header.scroll-down {
+    transform: translateY(-100%);
+
+    transition-duration: 0.6s;
+}
+
+
+/* Mostrar header al subir */
+
+header.scroll-up {
+    transform: translateY(0);
+
+    transition-duration: 0.5s;
+}
+
+
+/* =========================
+   MARCA
+   ========================= */
+
+.marca {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-family: var(--serif);
+
+    font-size: 1.25rem;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    letter-spacing: 0.2px;
+}
+
+.marca svg {
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   NAVEGACIÓN
+   ========================= */
+
+.navegacion {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-left: auto;
+
+    margin-right: 25px;
+}
+
+.navegacion a {
+    padding: 9px 13px;
+
+    border-radius: 7px;
+
+    font-size: 0.92rem;
+
+    font-weight: 500;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.navegacion a:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   BOTÓN INICIAR SESIÓN
+   ========================= */
+
+.boton-login {
+    display: inline-flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: 39px;
+
+    padding: 0 18px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.5);
+
+    border-radius: 8px;
+
+    color: var(--blanco);
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.boton-login:hover {
+    background-color: var(--papel);
+
+    color: var(--rojo);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   MENÚ MÓVIL
+   ========================= */
+
+.menu-movil {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 9px;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.menu-movil span {
+    display: block;
+
+    width: 100%;
+
+    height: 2px;
+
+    margin: 5px 0;
+
+    border-radius: 2px;
+
+    background-color: var(--blanco);
+
+    transition: 0.3s ease;
+}
+
+
+/* =========================
+   SUB HEADER
+   ========================= */
+
+.sub-header {
+    margin-top: var(--header-alto);
+
+    min-height: 42px;
+
+    padding: 8px 5%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    background-color: var(--rojo-oscuro);
+
+    color: var(--blanco);
+
+    font-family: var(--maquina);
+
+    font-size: 0.78rem;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+.separador {
+    opacity: 0.55;
+}
+
+
+/* =========================
+   MAIN
+   ========================= */
+
+main {
+    width: 100%;
+
+    padding-top: 60px;
+
+    padding-bottom: 100px;
+}
+
+
+/* =========================
+   CARNET
+   ========================= */
+
+.recuadro_al_centro {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px 20px;
+}
+
+.carnet {
+    width: 650px;
+
+    max-width: 100%;
+
+    background-color: var(--papel);
+
+    border-radius: var(--radio);
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--linea);
+
+    box-shadow:
+        0 10px 30px rgba(42, 27, 27, 0.14);
+}
+
+
+/* =========================
+   TÍTULO DEL CARNET
+   ========================= */
+
+.titulo_carnet {
+    background-color: var(--rojo);
+
+    padding: 22px;
+
+    text-align: center;
+
+    color: var(--papel);
+}
+
+.titulo_carnet h1 {
+    margin: 0;
+
+    font-family: var(--serif);
+
+    font-size: 25px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================
+   DATOS DEL ESTUDIANTE
+   ========================= */
+
+.contenido_carnet {
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 30px;
+}
+
+.datos_estudiante {
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+.dato {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    border-bottom:
+        1px solid var(--linea);
+
+    padding-bottom: 8px;
+}
+
+.dato .etiqueta {
+    font-family: var(--maquina);
+
+    font-size: 11px;
+
+    color: var(--rojo);
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.dato strong {
+    font-size: 16px;
+
+    color: var(--tinta);
+
+    word-break: break-word;
+}
+
+
+/* =========================
+   SECCIÓN SANCIONES
+   ========================= */
+
+.titulo_seccion {
+    background-color:
+        rgba(134, 29, 29, 0.05);
+
+    padding: 14px 20px;
+
+    border-top:
+        1px solid var(--linea);
+
+    border-bottom:
+        1px solid var(--linea);
+}
+
+.titulo_seccion h2 {
+    margin: 0;
+
+    font-family: var(--serif);
+
+    font-size: 20px;
+
+    color: var(--tinta);
+}
+
+
+/* =========================
+   TABLA DEL TÍTULO
+   ========================= */
+
+.pepe {
+    margin: 0 auto;
+
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.pepito1 {
+    width: 80%;
+
+    text-align: left;
+}
+
+.pepito2 {
+    width: 20%;
+
+    text-align: right;
+}
+
+
+/* =========================
+   BOTÓN AÑADIR
+   ========================= */
+
+.contenedor_añadir {
+    width: auto;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    margin: 0 0 0 auto;
+}
+
+.añadir {
+    cursor: pointer;
+
+    padding: 10px 18px;
+
+    text-align: center;
+
+    background-color: var(--rojo);
+
+    color: var(--papel);
+
+    border:
+        1px solid var(--rojo);
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.añadir:hover {
+    background-color: var(--rojo-oscuro);
+
+    border-color: var(--rojo-oscuro);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px var(--sombra);
+}
+
+
+/* =========================
+   LISTA DE SANCIONES
+   ========================= */
+
+.lista_sanciones {
+    padding: 15px;
+}
+
+.sancion {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 18px;
+
+    border-radius: 10px;
+}
+
+.sancion h3 {
+    margin: 0 0 5px;
+
+    font-family: var(--serif);
+
+    font-size: 17px;
+
+    color: var(--tinta);
+}
+
+.sancion p {
+    margin: 0;
+
+    color: var(--tinta-suave);
+
+    font-size: 14px;
+}
+
+.icono_sancion {
+    width: 45px;
+
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background-color:
+        rgba(76, 175, 80, 0.15);
+
+    color: var(--verde);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 25px;
+
+    font-weight: bold;
+}
+
+.sin_sanciones {
+    background-color:
+        rgba(76, 175, 80, 0.08);
+
+    border:
+        1px solid rgba(76, 175, 80, 0.15);
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    background-color: var(--rojo-oscuro);
+
+    color: var(--blanco);
+
+    min-height: 90px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    width: 100%;
+}
+
+.parte_de_abajo {
+    text-align: center;
+
+    padding: 20px 15px;
+
+    font-size: 0.82rem;
+
+    opacity: 0.9;
+}
+
+
+
+
+
+.numeros {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.numeros input {
+    width: 80px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 850px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+    .navegacion {
+        position: absolute;
+
+        top: var(--header-alto);
+
+        left: 0;
+
+        width: 100%;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 3px;
+
+        margin: 0;
+
+        padding: 15px;
+
+        background-color: var(--rojo-oscuro);
+
+        box-shadow:
+            0 8px 15px rgba(0, 0, 0, 0.18);
+    }
+
+    .navegacion.activo {
+        display: flex;
+    }
+
+    .navegacion a {
+        padding: 12px;
+
+        text-align: center;
+    }
+
+    .menu-movil {
+        display: block;
+
+        margin-left: 12px;
+    }
+
+    .menu-movil.activo span:nth-child(1) {
+        transform:
+            translateY(7px)
+            rotate(45deg);
+    }
+
+    .menu-movil.activo span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-movil.activo span:nth-child(3) {
+        transform:
+            translateY(-7px)
+            rotate(-45deg);
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .contenido_carnet {
+        flex-direction: column;
+    }
+
+    .datos_estudiante {
+        width: 100%;
+
+        grid-template-columns: 1fr;
+    }
+
+    .titulo_carnet h1 {
+        font-size: 20px;
+    }
+
+    .pepito1 {
+        width: 65%;
+    }
+
+    .pepito2 {
+        width: 35%;
+    }
+
+    .añadir {
+        padding: 9px 13px;
+
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    :root {
+        --header-alto: 62px;
+    }
+
+    header {
+        padding: 0 14px;
+    }
+
+    .marca {
+        font-size: 1rem;
+    }
+
+    .marca svg {
+        width: 25px;
+
+        height: 25px;
+    }
+
+    .boton-login {
+        margin-left: auto;
+
+        padding: 0 11px;
+
+        min-height: 35px;
+
+        font-size: 0.76rem;
+    }
+
+    .sub-header {
+        font-size: 0.67rem;
+
+        letter-spacing: 1px;
+    }
+
+    main {
+        padding-top: 40px;
+    }
+
+    .recuadro_al_centro {
+        padding: 20px 12px;
+    }
+
+    .carnet {
+        width: 100%;
+    }
+
+    .contenido_carnet {
+        padding: 22px;
+    }
+
+    .titulo_seccion {
+        padding: 12px;
+    }
+
+    .lista_sanciones {
+        padding: 12px;
+    }
+}
+
+
+@media (max-width: 390px) {
+
+    .marca span {
+        display: none;
+    }
+
+    .boton-login {
+        margin-left: auto;
+    }
+}
